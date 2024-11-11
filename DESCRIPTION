@@ -1,0 +1,15 @@
+Package: CSurf
+Type: Package
+Title: Change Surface regression method for nonlinear subgroup identification
+Version: 1.0
+Date: 2024-11-11
+Author: Pan Liu
+Maintainer: Pan Liu <panliu23@g.ucla.edu>
+Description: Identify change surfaces that characterize subgroups in high dimensional spaces and estimate regression coefficients for each subgroup
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: Rcpp (>= 1.0.9), ILAMM, glmnet (>= 4.1-7), Matrix, matrixStats, partitions, sda
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 4.0.0)
