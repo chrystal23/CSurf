@@ -18,28 +18,30 @@ The main function CSurf requires the following inputs:
 
 - `y`: A vector (length n) of the response for subgroup identification.
 - `X`: A matrix (n x p) of the covariates for subgroup identification. The covariates are also used as potential thresholding variables for subgroup identification.
-- 
- f_hat0 A vector (length n) of the initialization for the threshold function (change surface).
- Tighten A boolean indicating whether to include the tightening stage in optimization.
-tol_out The tolerance value for optimization (stopping criterion).
-maxiter_out The maximal number of iterations allowed for optimization.
-m An integer indicating the power of the threshold function.
-lam2rate The ratio between the two tunning parameters, lambda1 and lambda2.
+- `f_hat0`: A vector (length n) of the initialization for the threshold function (change surface).
+- `Tighten`: A boolean indicating whether to include the tightening stage in optimization.
+- `tol_out`: The tolerance value for optimization (stopping criterion).
+- `maxiter_out`: The maximal number of iterations allowed for optimization.
+- `m`: An integer indicating the power of the threshold function.
+- `lam2rate`: The ratio between the two tunning parameters, lambda1 and lambda2.
 
 The CSurf function returns a list of estimation results: 
 
  ### Outputs
 
-#' \item{f_all.hat}{The estimated threshold functions. Each column represent one component function.}
-#' \item{tau.hat}{The estimated change points over the threshold functions.}
-#' \item{alp.hat}{The estimated regression coefficients.}
-#' \item{coverged_out}{An boolean indicating whether the algorithm successfully converged.}
-#' \item{iter_out}{The number of iterations it took to converge.}
-#' \item{...}{Other estimation results.}
+- `f_all.hat`: The estimated threshold functions. Each column represent one component function.
+- `tau.hat`: The estimated change points over the threshold functions.
+- `alp.hat`: The estimated regression coefficients.
+- `coverged_out`: An boolean indicating whether the algorithm successfully converged.
+- `iter_out`: The number of iterations it took to converge.
+- `...`: Other estimation results.
 
 An example input data is can be loaded using
 ```r
 data(syn_data)
-results <- CSurf(y = y, X = X, f_hat0 = f_hat0, h = .5, maxiter_out = 10, tol_out = 0.01)
+```
+where an example response vector (length 500) `y`, a covariate matrix (500 x 30) `X`, and a vector of threshold function initialization (length 500) `f_hat0` are included. To implement our CSurf method on this example data to identify subgroups, we run
+```r
+results <- CSurf(y = y, X = X, f_hat0 = f_hat0, h = .5, maxiter_out = 10, tol_out = 0.0001)
 ```
  
