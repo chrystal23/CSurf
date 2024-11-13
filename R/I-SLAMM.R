@@ -26,7 +26,7 @@
 #' data(syn_data)
 #' results <- CSurf(y = y, X = X, f_hat0 = f_hat0, h = .5, maxiter_out = 10, tol_out = 0.0001)
 
-CSurf <- function(y, X, f_hat0, h, Tighten = FALSE, tol_out = 1e-4, maxiter_out = 10, m = 3, lam2rate = 1){
+CSurf <- function(y, X, f_hat0, h = 0.5, Tighten = FALSE, tol_out = 1e-4, maxiter_out = 10, m = 3, lam2rate = 1){
   
   n = nrow(X)
   p = ncol(X)
