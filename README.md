@@ -37,7 +37,7 @@ The CSurf function returns a list of estimation results:
 #' \item{iter_out}{The number of iterations it took to converge.}
 #' \item{...}{Other estimation results.}
 
-An example input data is can be load using
+An example input data is can be loaded using
 ```r
 data(syn_data)
 results <- CSurf(y = y, X = X, f_hat0 = f_hat0, h = .5, maxiter_out = 10, tol_out = 0.01)
