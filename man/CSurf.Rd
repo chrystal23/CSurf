@@ -8,7 +8,7 @@ CSurf(
   y,
   X,
   f_hat0,
-  h,
+  h = 0.5,
   Tighten = FALSE,
   tol_out = 1e-04,
   maxiter_out = 10,
