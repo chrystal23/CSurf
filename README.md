@@ -66,4 +66,19 @@ for (j in 1:3) {
         ylab = paste("f", j, sep =  "_")) 
  }
 ```
-<img src="man/figures/results_fhat.png" width="100%" />
+<img src="man/figures/results_fhat.png" width="80%" />
+
+We can obtain the subgroup membership, denoted by `subgr.hat`, of each observation (subject) from the results
+```r
+subgr.hat <- rep(1,dim(Xord)[1])
+for (k in 1:length(tau.hat)) {
+  id <- which( rowSums(f_all.hat) > tau.hat[k] )
+  subgr.hat[id] <- subgr.hat[id] + 1
+}
+table(subgr.hat)
+```
+| subgr.hat | 1 | 2 | 3 |
+|---|-------------|----------|-------------------------|
+|  | 116 | 196 | 188 |
+
+
