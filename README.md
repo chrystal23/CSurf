@@ -32,6 +32,8 @@ The CSurf function returns a list of estimation results:
 - `f_all.hat`: The estimated threshold functions. Each column represent one component function.
 - `tau.hat`: The estimated change points over the threshold functions.
 - `alp.hat`: The estimated regression coefficients.
+- `X_ord`: the re-ordered covariate matrix, which corresponds to above estimation results
+- `y_ord`: the re-ordered response vector, which corresponds to above estimation results
 - `coverged_out`: An boolean indicating whether the algorithm successfully converged.
 - `iter_out`: The number of iterations it took to converge.
 - `...`: Other estimation results.
@@ -44,4 +46,24 @@ where an example response vector (length 500) `y`, a covariate matrix (500 x 30)
 ```r
 results <- CSurf(y = y, X = X, f_hat0 = f_hat0, h = .5, maxiter_out = 10, tol_out = 0.0001)
 ```
- 
+where `h = .5, maxiter_out = 10, tol_out = 0.0001` is exactly the default setting but can be specified by users based on their requirement for the optimization.
+The estimation results are
+```r
+f_all.hat = results$f_all.hat
+alp.hat<- results$alp.hat
+tau.hat<- results$tau.hat
+Xord = results$Xord
+```
+The component of threshold functions that characterize the subgroups can be visualized:
+```r
+par(mfrow = c(1,3))
+for (j in 1:3) {
+   plot(y = f_all.hat[order(Xord[,j]),j], 
+        x = sort(Xord[,j]), 
+        ylim = range(f_all.hat[,j])*2,
+        type = "l", 
+        xlab = paste("f", j, sep =  "_"), 
+        ylab = paste("f", j, sep =  "_")) 
+ }
+```
+<img src="man/figures/umap_opt.png" width="100%" />
