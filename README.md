@@ -66,4 +66,4 @@ for (j in 1:3) {
         ylab = paste("f", j, sep =  "_")) 
  }
 ```
-<img src="man/figures/umap_opt.png" width="100%" />
+<img src="man/figures/results_fhat.png" width="100%" />
